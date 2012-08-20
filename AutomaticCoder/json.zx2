@@ -1,0 +1,39 @@
+//
+//  
+//  AutomaticCoder
+//
+//  Created by 张玺自动代码生成器  http://zhangxi.me
+//  Copyright (c) 2012年 me.zhangxi. All rights reserved.
+//
+#import "#name#.h"
+
+@implementation #name#
+
+
+-(void)config:(NSDictionary *)json
+{
+    if(json != nil)
+    {
+       #config#
+    }
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    #encode#
+}
+
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super init];
+    if(self)
+    {
+        #decode#
+    }
+    return self;
+}
+
+
+
+@end

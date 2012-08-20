@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4349430C15E1D6ED006A427A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4349430B15E1D6ED006A427A /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4349431A15E1D7B3006A427A /* JSONWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4349431815E1D7B3006A427A /* JSONWindowController.m */; };
+		4349431B15E1D7B3006A427A /* JSONWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4349431915E1D7B3006A427A /* JSONWindowController.xib */; };
+		4349431E15E1DF71006A427A /* temp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4349431D15E1DF71006A427A /* temp.m */; };
+		4349432115E1E088006A427A /* json.zx1 in Resources */ = {isa = PBXBuildFile; fileRef = 4349431F15E1E088006A427A /* json.zx1 */; };
+		4349432215E1E088006A427A /* json.zx2 in Resources */ = {isa = PBXBuildFile; fileRef = 4349432015E1E088006A427A /* json.zx2 */; };
+		4349432A15E1EB1F006A427A /* JsonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4349432915E1EB1F006A427A /* JsonObject.m */; };
 		438EDC2815E1D08700D6B752 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438EDC2715E1D08700D6B752 /* Cocoa.framework */; };
 		438EDC3215E1D08700D6B752 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 438EDC3015E1D08700D6B752 /* InfoPlist.strings */; };
 		438EDC3415E1D08700D6B752 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 438EDC3315E1D08700D6B752 /* main.m */; };
@@ -16,6 +23,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4349430A15E1D6ED006A427A /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		4349430B15E1D6ED006A427A /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		4349431715E1D7B3006A427A /* JSONWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONWindowController.h; sourceTree = "<group>"; };
+		4349431815E1D7B3006A427A /* JSONWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONWindowController.m; sourceTree = "<group>"; };
+		4349431915E1D7B3006A427A /* JSONWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSONWindowController.xib; sourceTree = "<group>"; };
+		4349431C15E1DF71006A427A /* temp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = temp.h; sourceTree = "<group>"; };
+		4349431D15E1DF71006A427A /* temp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = temp.m; sourceTree = "<group>"; };
+		4349431F15E1E088006A427A /* json.zx1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json.zx1; sourceTree = "<group>"; };
+		4349432015E1E088006A427A /* json.zx2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json.zx2; sourceTree = "<group>"; };
+		4349432815E1EB1F006A427A /* JsonObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonObject.h; sourceTree = "<group>"; };
+		4349432915E1EB1F006A427A /* JsonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonObject.m; sourceTree = "<group>"; };
 		438EDC2315E1D08700D6B752 /* AutomaticCoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutomaticCoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		438EDC2715E1D08700D6B752 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		438EDC2A15E1D08700D6B752 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -82,9 +100,20 @@
 		438EDC2D15E1D08700D6B752 /* AutomaticCoder */ = {
 			isa = PBXGroup;
 			children = (
+				4349430A15E1D6ED006A427A /* JSONKit.h */,
+				4349430B15E1D6ED006A427A /* JSONKit.m */,
 				438EDC3915E1D08700D6B752 /* AppDelegate.h */,
 				438EDC3A15E1D08700D6B752 /* AppDelegate.m */,
 				438EDC3C15E1D08800D6B752 /* MainMenu.xib */,
+				4349431715E1D7B3006A427A /* JSONWindowController.h */,
+				4349431815E1D7B3006A427A /* JSONWindowController.m */,
+				4349431915E1D7B3006A427A /* JSONWindowController.xib */,
+				4349432815E1EB1F006A427A /* JsonObject.h */,
+				4349432915E1EB1F006A427A /* JsonObject.m */,
+				4349431C15E1DF71006A427A /* temp.h */,
+				4349431D15E1DF71006A427A /* temp.m */,
+				4349431F15E1E088006A427A /* json.zx1 */,
+				4349432015E1E088006A427A /* json.zx2 */,
 				438EDC2E15E1D08700D6B752 /* Supporting Files */,
 			);
 			path = AutomaticCoder;
@@ -156,6 +185,9 @@
 				438EDC3215E1D08700D6B752 /* InfoPlist.strings in Resources */,
 				438EDC3815E1D08700D6B752 /* Credits.rtf in Resources */,
 				438EDC3E15E1D08800D6B752 /* MainMenu.xib in Resources */,
+				4349431B15E1D7B3006A427A /* JSONWindowController.xib in Resources */,
+				4349432115E1E088006A427A /* json.zx1 in Resources */,
+				4349432215E1E088006A427A /* json.zx2 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +200,10 @@
 			files = (
 				438EDC3415E1D08700D6B752 /* main.m in Sources */,
 				438EDC3B15E1D08700D6B752 /* AppDelegate.m in Sources */,
+				4349430C15E1D6ED006A427A /* JSONKit.m in Sources */,
+				4349431A15E1D7B3006A427A /* JSONWindowController.m in Sources */,
+				4349431E15E1DF71006A427A /* temp.m in Sources */,
+				4349432A15E1EB1F006A427A /* JsonObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +329,7 @@
 				438EDC4315E1D08800D6B752 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

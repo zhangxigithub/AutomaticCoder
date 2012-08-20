@@ -15,4 +15,11 @@
     // Insert code here to initialize your application
 }
 
+- (IBAction)json:(id)sender {
+    
+    
+    
+    json = [[JSONWindowController alloc] initWithWindowNibName:@"JSONWindowController"];
+    [[json window] makeKeyAndOrderFront:nil];
+}
 @end
