@@ -57,12 +57,22 @@
     //name
     //property
     NSMutableString *proterty = [NSMutableString string];
+   
     for(NSString *key in [json allKeys])
     {
         JsonValueType type = [self type:[json objectForKey:key]];
-        [proterty appendFormat:@"@property (nonatomic,strong) %@ *%@;\n",[self typeName:type],key];
+        switch (type) {
+            case 0:
+            case 1:
+                [proterty appendFormat:@"@property (nonatomic,strong) %@ *%@;\n",[self typeName:type],key];
+                break;
+            case 2:
+               [proterty appendFormat:@"@property (nonatomic,assign) %@ %@;\n",[self typeName:type],key];                break;
+            default:
+                break;
+        }
     }
-    
+
     [templateH replaceOccurrencesOfString:@"#name#"
                                withString:name
                                   options:NSCaseInsensitiveSearch
