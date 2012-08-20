@@ -9,7 +9,7 @@
 	<key>CFBundleIconFile</key>
 	<string>my_computer-1</string>
 	<key>CFBundleIdentifier</key>
-	<string>me.zhangxi.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>me.zhangxi.AutomaticCoder</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
