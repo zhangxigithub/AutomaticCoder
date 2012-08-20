@@ -13,7 +13,8 @@
 		4349431E15E1DF71006A427A /* temp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4349431D15E1DF71006A427A /* temp.m */; };
 		4349432115E1E088006A427A /* json.zx1 in Resources */ = {isa = PBXBuildFile; fileRef = 4349431F15E1E088006A427A /* json.zx1 */; };
 		4349432215E1E088006A427A /* json.zx2 in Resources */ = {isa = PBXBuildFile; fileRef = 4349432015E1E088006A427A /* json.zx2 */; };
-		4349432A15E1EB1F006A427A /* JsonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4349432915E1EB1F006A427A /* JsonObject.m */; };
+		4349432C15E209CD006A427A /* my_computer-1.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4349432B15E209CD006A427A /* my_computer-1.icns */; };
+		4349432F15E209FF006A427A /* JsonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4349432D15E209FF006A427A /* JsonObject.m */; };
 		438EDC2815E1D08700D6B752 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438EDC2715E1D08700D6B752 /* Cocoa.framework */; };
 		438EDC3215E1D08700D6B752 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 438EDC3015E1D08700D6B752 /* InfoPlist.strings */; };
 		438EDC3415E1D08700D6B752 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 438EDC3315E1D08700D6B752 /* main.m */; };
@@ -32,8 +33,9 @@
 		4349431D15E1DF71006A427A /* temp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = temp.m; sourceTree = "<group>"; };
 		4349431F15E1E088006A427A /* json.zx1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json.zx1; sourceTree = "<group>"; };
 		4349432015E1E088006A427A /* json.zx2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json.zx2; sourceTree = "<group>"; };
-		4349432815E1EB1F006A427A /* JsonObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonObject.h; sourceTree = "<group>"; };
-		4349432915E1EB1F006A427A /* JsonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonObject.m; sourceTree = "<group>"; };
+		4349432B15E209CD006A427A /* my_computer-1.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "my_computer-1.icns"; sourceTree = "<group>"; };
+		4349432D15E209FF006A427A /* JsonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonObject.m; sourceTree = "<group>"; };
+		4349432E15E209FF006A427A /* JsonObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonObject.h; sourceTree = "<group>"; };
 		438EDC2315E1D08700D6B752 /* AutomaticCoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutomaticCoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		438EDC2715E1D08700D6B752 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		438EDC2A15E1D08700D6B752 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -64,6 +66,7 @@
 		438EDC1815E1D08700D6B752 = {
 			isa = PBXGroup;
 			children = (
+				4349432B15E209CD006A427A /* my_computer-1.icns */,
 				438EDC2D15E1D08700D6B752 /* AutomaticCoder */,
 				438EDC2615E1D08700D6B752 /* Frameworks */,
 				438EDC2415E1D08700D6B752 /* Products */,
@@ -108,8 +111,8 @@
 				4349431715E1D7B3006A427A /* JSONWindowController.h */,
 				4349431815E1D7B3006A427A /* JSONWindowController.m */,
 				4349431915E1D7B3006A427A /* JSONWindowController.xib */,
-				4349432815E1EB1F006A427A /* JsonObject.h */,
-				4349432915E1EB1F006A427A /* JsonObject.m */,
+				4349432E15E209FF006A427A /* JsonObject.h */,
+				4349432D15E209FF006A427A /* JsonObject.m */,
 				4349431C15E1DF71006A427A /* temp.h */,
 				4349431D15E1DF71006A427A /* temp.m */,
 				4349431F15E1E088006A427A /* json.zx1 */,
@@ -188,6 +191,7 @@
 				4349431B15E1D7B3006A427A /* JSONWindowController.xib in Resources */,
 				4349432115E1E088006A427A /* json.zx1 in Resources */,
 				4349432215E1E088006A427A /* json.zx2 in Resources */,
+				4349432C15E209CD006A427A /* my_computer-1.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +207,7 @@
 				4349430C15E1D6ED006A427A /* JSONKit.m in Sources */,
 				4349431A15E1D7B3006A427A /* JSONWindowController.m in Sources */,
 				4349431E15E1DF71006A427A /* temp.m in Sources */,
-				4349432A15E1EB1F006A427A /* JsonObject.m in Sources */,
+				4349432F15E209FF006A427A /* JsonObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +297,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutomaticCoder/AutomaticCoder-Prefix.pch";
 				INFOPLIST_FILE = "AutomaticCoder/AutomaticCoder-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -305,6 +310,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutomaticCoder/AutomaticCoder-Prefix.pch";
 				INFOPLIST_FILE = "AutomaticCoder/AutomaticCoder-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

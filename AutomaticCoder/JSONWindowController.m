@@ -34,9 +34,14 @@
 }
 
 - (IBAction)generateClass:(id)sender {
-    NSString *headerFile = [NSString string];
+    //NSString *headerFile = [NSString string];
+    
+    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *name       = jsonName.stringValue;
     NSDictionary *json   = [jsonContent.string objectFromJSONString];
+    
+    
+    
     if(json == nil)
     {
         jsonContent.string = @"json格式不对吧。。。。。";
@@ -88,7 +93,7 @@
     
     
     NSError *error;
-    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    
     [templateH writeToFile:[NSString stringWithFormat:@"%@/%@.h",docDir,name]
                 atomically:NO
                   encoding:NSUTF8StringEncoding
@@ -163,7 +168,7 @@
     
     if(error == nil)
     {
-        jsonContent.string = @"生成了.h.m文件，给您放桌面上了，看看格式对不对。哦，对了，目前还不支持json里面嵌套数组和字典，以后可能会加上。";
+        jsonContent.string = @"生成了.h.m(ARC)文件，给您放桌面上了，看看格式对不对。哦，对了，目前还不支持json里面嵌套数组和字典，以后可能会加上。";
     }
     //jsonContent.string = templateM;
     //.h
