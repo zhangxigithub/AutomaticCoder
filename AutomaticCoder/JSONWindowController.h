@@ -9,6 +9,14 @@
 #import <Cocoa/Cocoa.h>
 #import "JSONKit.h"
 
+typedef enum
+{
+    kString = 0,
+    kNumber = 1,
+    kBool   = 2
+}JsonValueType;
+
+
 @interface JSONWindowController : NSWindowController
 
 @property (unsafe_unretained) IBOutlet NSTextView *jsonContent;
