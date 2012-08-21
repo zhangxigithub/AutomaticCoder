@@ -10,12 +10,17 @@
 @implementation #name#
 
 
--(void)config:(NSDictionary *)json
+-(id)initWithJson:(NSDictionary *)json;
 {
+    self = [super init];
+    if(self)
+    {
     if(json != nil)
     {
        #config#
     }
+    }
+    return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder

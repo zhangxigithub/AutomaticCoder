@@ -13,7 +13,9 @@ typedef enum
 {
     kString = 0,
     kNumber = 1,
-    kBool   = 2
+    kArray  = 2,
+    kDictionary = 3,
+    kBool   = 4,
 }JsonValueType;
 
 
@@ -23,6 +25,10 @@ typedef enum
 @property (weak) IBOutlet NSTextField *jsonName;
 @property (weak) IBOutlet NSTextField *preName;
 @property (weak) IBOutlet NSTextField *jsonURL;
+
+- (IBAction)useTextURL:(id)sender;
+
+
 - (IBAction)getJSONWithURL:(id)sender;
 
 - (IBAction)generateClass:(id)sender;

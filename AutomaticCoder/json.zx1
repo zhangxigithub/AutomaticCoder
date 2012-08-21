@@ -8,11 +8,13 @@
 
 
 #import <Foundation/Foundation.h>
+#import#
 
 @interface #name# : NSObject<NSCoding>
 
 #property# 
 
--(void)config:(NSDictionary *)json;
+
+-(id)initWithJson:(NSDictionary *)json;
 
 @end

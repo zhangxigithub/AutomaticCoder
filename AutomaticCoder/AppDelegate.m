@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "JsonObject.h"
 
 
 @implementation AppDelegate

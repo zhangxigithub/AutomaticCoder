@@ -34,26 +34,9 @@
 }
 
 
-
-- (IBAction)getJSONWithURL:(id)sender {
-    NSURL *url = [NSURL URLWithString:jsonURL.stringValue];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    NSData *data = [NSURLConnection sendSynchronousRequest:request
-                                                        returningResponse:nil
-                                                                    error:nil];
-    jsonContent.string = [[NSString  alloc] initWithData:data encoding:NSUTF8StringEncoding];
-}
-
-- (IBAction)generateClass:(id)sender {
+-(void)generateClass:(NSString *)name forDic:(NSDictionary *)json
+{
     NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *name       = jsonName.stringValue;
-    NSDictionary *json   = [jsonContent.string objectFromJSONString];
-    
-    if(json == nil)
-    {
-        jsonContent.string = @"json格式不对吧。。。。。";
-        return;
-    }
     
     //准备模板
     NSMutableString *templateH =[[NSMutableString alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"json" ofType:@"zx1"]
@@ -62,41 +45,52 @@
     NSMutableString *templateM =[[NSMutableString alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"json" ofType:@"zx2"]
                                                                        encoding:NSUTF8StringEncoding
                                                                           error:nil];
-
-
+    
+    
     //.h
     //name
     //property
     NSMutableString *proterty = [NSMutableString string];
-   
+    NSMutableString *import = [NSMutableString string];
+    
     for(NSString *key in [json allKeys])
     {
         JsonValueType type = [self type:[json objectForKey:key]];
         switch (type) {
-            case 0:
-            case 1:
+            case kString:
+            case kNumber:
                 [proterty appendFormat:@"@property (nonatomic,strong) %@ *%@%@;\n",[self typeName:type],preName.stringValue,key];
                 break;
-            case 2:
-               [proterty appendFormat:@"@property (nonatomic,assign) %@ %@%@;\n",[self typeName:type],preName.stringValue,key];
+            case kArray:
+            {
+            }
+                break;
+            case kDictionary:
+                [proterty appendFormat:@"@property (nonatomic,strong) %@Entity *%@%@;\n",key,preName.stringValue,key];
+                [import appendFormat:@"#import \"%@Entity.h\"",key];
+                [self generateClass:[NSString stringWithFormat:@"%@Entity",key] forDic:[json objectForKey:key]];
+                
+                break;
+            case kBool:
+                [proterty appendFormat:@"@property (nonatomic,assign) %@ %@%@;\n",[self typeName:type],preName.stringValue,key];
                 break;
             default:
                 break;
         }
     }
-
+    
     [templateH replaceOccurrencesOfString:@"#name#"
                                withString:name
                                   options:NSCaseInsensitiveSearch
                                     range:NSMakeRange(0, templateH.length)];
-    
+    [templateH replaceOccurrencesOfString:@"#import#"
+                               withString:import
+                                  options:NSCaseInsensitiveSearch
+                                    range:NSMakeRange(0, templateH.length)];
     [templateH replaceOccurrencesOfString:@"#property#"
                                withString:proterty
                                   options:NSCaseInsensitiveSearch
                                     range:NSMakeRange(0, templateH.length)];
-    
-
-
     
     //.m
     //NSCoding
@@ -110,7 +104,7 @@
     NSMutableString *config = [NSMutableString string];
     NSMutableString *encode = [NSMutableString string];
     NSMutableString *decode = [NSMutableString string];
-
+    
     NSDictionary *list =  @{
     @"config":config,
     @"encode":encode,
@@ -122,14 +116,22 @@
     {
         JsonValueType type = [self type:[json objectForKey:key]];
         switch (type) {
-            case 0:
-            case 1:
+            case kString:
+            case kNumber:
                 [config appendFormat:@"self.%@%@  = [json objectForKey:@\"%@\"];\n ",preName.stringValue,key,key];
                 [encode appendFormat:@"[aCoder encodeObject:self.%@%@ forKey:@\"zx_%@\"];\n",preName.stringValue,key,key];
                 [decode appendFormat:@"self.%@%@ = [aDecoder decodeObjectForKey:@\"zx_%@\"];\n ",preName.stringValue,key,key];
                 break;
-            case 2:
-                [config appendFormat:@"self.%@%@ = [[json objectForKey:@\"%@\"] booleanValue];\n ",preName.stringValue,key,key];
+            case kArray:
+                break;
+            case kDictionary:
+                [config appendFormat:@"self.%@%@  = [[%@Entity alloc] initWithJson:[json objectForKey:@\"%@\"]];\n ",preName.stringValue,key,key,key];
+                [encode appendFormat:@"[aCoder encodeObject:self.%@%@ forKey:@\"zx_%@\"];\n",preName.stringValue,key,key];
+                [decode appendFormat:@"self.%@%@ = [aDecoder decodeObjectForKey:@\"zx_%@\"];\n ",preName.stringValue,key,key];
+                
+                break;
+            case kBool:
+                [config appendFormat:@"self.%@%@ = [[json objectForKey:@\"%@\"]boolValue];\n ",preName.stringValue,key,key];
                 [encode appendFormat:@"[aCoder encodeBool:self.%@%@ forKey:@\"zx_%@\"];\n",preName.stringValue,key,key];
                 [decode appendFormat:@"self.%@%@ = [aDecoder decodeBoolForKey:@\"zx_%@\"];\n",preName.stringValue,key,key];
                 break;
@@ -146,7 +148,7 @@
                                       options:NSCaseInsensitiveSearch
                                         range:NSMakeRange(0, templateM.length)];
     }
-
+    
     
     //写文件
     [templateH writeToFile:[NSString stringWithFormat:@"%@/%@.h",docDir,name]
@@ -158,14 +160,158 @@
                   encoding:NSUTF8StringEncoding
                      error:nil];
     
+    jsonContent.string = @"生成了.h.m(ARC)文件，给您放桌面上了，看看格式对不对。哦，对了，目前还不支持json里面嵌套数组和字典，以后可能会加上。";
+    
+}
+
+
+
+
+
+- (IBAction)useTextURL:(id)sender {
+    jsonURL.stringValue = @"http://zxapi.sinaapp.com";
+}
+
+- (IBAction)getJSONWithURL:(id)sender {
+    NSURL *url = [NSURL URLWithString:jsonURL.stringValue];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSData *data = [NSURLConnection sendSynchronousRequest:request
+                                                        returningResponse:nil
+                                                                    error:nil];
+    jsonContent.string = [[NSString  alloc] initWithData:data encoding:NSUTF8StringEncoding];
+}
+
+
+
+
+- (IBAction)generateClass:(id)sender {
+   // NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+   // NSString *name       = jsonName.stringValue;
+    NSDictionary *json   = [jsonContent.string objectFromJSONString];
+    
+    if(json == nil)
+    {
+        jsonContent.string = @"json格式不对吧。。。。。";
+        return;
+    }
+    
+    [self generateClass:jsonName.stringValue forDic:json];
+    
     jsonContent.string = @"生成了.h.m(ARC)文件，给您放桌面上了，看看格式对不对。哦，对了，目前还不支持json里面嵌套数组和字典，以后可能会加上。"; 
+//    
+//    //准备模板
+//    NSMutableString *templateH =[[NSMutableString alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"json" ofType:@"zx1"]
+//                                                                       encoding:NSUTF8StringEncoding
+//                                                                          error:nil];
+//    NSMutableString *templateM =[[NSMutableString alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"json" ofType:@"zx2"]
+//                                                                       encoding:NSUTF8StringEncoding
+//                                                                          error:nil];
+//
+//
+//    //.h
+//    //name
+//    //property
+//    NSMutableString *proterty = [NSMutableString string];
+//   
+//    for(NSString *key in [json allKeys])
+//    {
+//        JsonValueType type = [self type:[json objectForKey:key]];
+//        switch (type) {
+//            case 0:
+//            case 1:
+//                [proterty appendFormat:@"@property (nonatomic,strong) %@ *%@%@;\n",[self typeName:type],preName.stringValue,key];
+//                break;
+//            case 2:
+//               [proterty appendFormat:@"@property (nonatomic,assign) %@ %@%@;\n",[self typeName:type],preName.stringValue,key];
+//                break;
+//            default:
+//                break;
+//        }
+//    }
+//
+//    [templateH replaceOccurrencesOfString:@"#name#"
+//                               withString:name
+//                                  options:NSCaseInsensitiveSearch
+//                                    range:NSMakeRange(0, templateH.length)];
+//    
+//    [templateH replaceOccurrencesOfString:@"#property#"
+//                               withString:proterty
+//                                  options:NSCaseInsensitiveSearch
+//                                    range:NSMakeRange(0, templateH.length)];
+//    
+//
+//
+//    
+//    //.m
+//    //NSCoding
+//    //name
+//    [templateM replaceOccurrencesOfString:@"#name#"
+//                               withString:name
+//                                  options:NSCaseInsensitiveSearch
+//                                    range:NSMakeRange(0, templateM.length)];
+//    
+//    
+//    NSMutableString *config = [NSMutableString string];
+//    NSMutableString *encode = [NSMutableString string];
+//    NSMutableString *decode = [NSMutableString string];
+//
+//    NSDictionary *list =  @{
+//    @"config":config,
+//    @"encode":encode,
+//    @"decode":decode
+//    };
+//    
+//    
+//    for(NSString *key in [json allKeys])
+//    {
+//        JsonValueType type = [self type:[json objectForKey:key]];
+//        switch (type) {
+//            case 0:
+//            case 1:
+//                [config appendFormat:@"self.%@%@  = [json objectForKey:@\"%@\"];\n ",preName.stringValue,key,key];
+//                [encode appendFormat:@"[aCoder encodeObject:self.%@%@ forKey:@\"zx_%@\"];\n",preName.stringValue,key,key];
+//                [decode appendFormat:@"self.%@%@ = [aDecoder decodeObjectForKey:@\"zx_%@\"];\n ",preName.stringValue,key,key];
+//                break;
+//            case 2:
+//                [config appendFormat:@"self.%@%@ = [[json objectForKey:@\"%@\"] booleanValue];\n ",preName.stringValue,key,key];
+//                [encode appendFormat:@"[aCoder encodeBool:self.%@%@ forKey:@\"zx_%@\"];\n",preName.stringValue,key,key];
+//                [decode appendFormat:@"self.%@%@ = [aDecoder decodeBoolForKey:@\"zx_%@\"];\n",preName.stringValue,key,key];
+//                break;
+//            default:
+//                break;
+//        }
+//    }
+//    
+//    //修改模板
+//    for(NSString *key in [list allKeys])
+//    {
+//        [templateM replaceOccurrencesOfString:[NSString stringWithFormat:@"#%@#",key]
+//                                   withString:[list objectForKey:key]
+//                                      options:NSCaseInsensitiveSearch
+//                                        range:NSMakeRange(0, templateM.length)];
+//    }
+//
+//    
+//    //写文件
+//    [templateH writeToFile:[NSString stringWithFormat:@"%@/%@.h",docDir,name]
+//                atomically:NO
+//                  encoding:NSUTF8StringEncoding
+//                     error:nil];
+//    [templateM writeToFile:[NSString stringWithFormat:@"%@/%@.m",docDir,name]
+//                atomically:NO
+//                  encoding:NSUTF8StringEncoding
+//                     error:nil];
+    
+    
 }
 
 -(JsonValueType)type:(id)obj
 {
-    if([[obj className] isEqualToString:@"__NSCFString"]) return kString;
+    if([[obj className] isEqualToString:@"__NSCFString"] || [[obj className] isEqualToString:@"__NSCFConstantString"]) return kString;
     else if([[obj className] isEqualToString:@"__NSCFNumber"]) return kNumber;
     else if([[obj className] isEqualToString:@"__NSCFBoolean"])return kBool;
+    else if([[obj className] isEqualToString:@"JKDictionary"])return kDictionary;
+    else if([[obj className] isEqualToString:@"JKArray"])return kArray;
     return -1;
 }
 
@@ -180,6 +326,10 @@
             break;
         case kBool:
             return @"BOOL";
+            break;
+        case kArray:
+        case kDictionary:
+            return @"";
             break;
             
         default:
