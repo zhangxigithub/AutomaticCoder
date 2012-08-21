@@ -16,6 +16,7 @@
 @synthesize jsonContent;
 @synthesize jsonName;
 @synthesize preName;
+@synthesize jsonURL;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -33,6 +34,15 @@
 }
 
 
+
+- (IBAction)getJSONWithURL:(id)sender {
+    NSURL *url = [NSURL URLWithString:jsonURL.stringValue];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSData *data = [NSURLConnection sendSynchronousRequest:request
+                                                        returningResponse:nil
+                                                                    error:nil];
+    jsonContent.string = [[NSString  alloc] initWithData:data encoding:NSUTF8StringEncoding];
+}
 
 - (IBAction)generateClass:(id)sender {
     NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -158,6 +168,7 @@
     else if([[obj className] isEqualToString:@"__NSCFBoolean"])return kBool;
     return -1;
 }
+
 -(NSString *)typeName:(JsonValueType)type
 {
     switch (type) {
