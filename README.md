@@ -1,0 +1,1 @@
+Automatic generate Objective-C code by JSON string.Support <NSCoding>.
