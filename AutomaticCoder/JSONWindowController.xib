@@ -72,36 +72,74 @@
 												<object class="NSLayoutManager" key="NSLayoutManager">
 													<object class="NSTextStorage" key="NSTextStorage">
 														<object class="NSMutableString" key="NSString">
-															<bytes key="NS.bytes">ewogICJhZ2UiIDogMjMsCiAgImFyciIgOiBbCiAgICAiYWEiLAogICAgInNzcyIKICBdLAogICJkaWMi
-IDogewogICAgImRpYzEiIDogIiIsCiAgICAiZGljMiIgOiAiIgogIH0sCiAgImVtYWlsIiA6ICJ6aGFu
-Z3hpXzE5ODlAc2luYS5jb20iLAogICJtYWxlIiA6IHRydWUsCiAgIm5hbWUiIDogIuW8oOeOuiIKfQ</bytes>
+															<bytes key="NS.bytes">MS7lnKjmiopqc29u5a2X56ym5Liy5aSN5Yi25Yiw5q2k5aSE77yM5oiW6ICF5aGr5YaZQVBJIFVSTOiO
+t+WPlkpTT07jgIIKMi7ku4XnlJ/miJBBUkPlr7nosaEKMy7mlK/mjIE8TlNDb2Rpbmc+5Y2P6K6uCjQu
+5a2X5YW45a+56LGh5bCG55Sf5oiQ5ZCO57yA5Li6RW50aXR555qE57G744CCCjUu5b2T5pWw57uE5oiQ
+5ZGY5pyJ5LiU5Y+q5pyJ5a2X5YW477yM5LiU5omA5pyJ5YWD57Sg5qC85byP57uf5LiA5pe277yM5bCG
+55Sf5oiQTlNNdXRhYmxlQXJyYXnnsbvlnovnmoTmiJDlkZjlj5jph4/vvIzlubbnlJ/miJDnm7jlupTl
+rp7kvZPnsbvjgIIKCjYu55yf5b+D6ZyA6KaB5oKo55qE5Y+N6aaI44CCemhhbmd4aV8xOTg5QHNpbmEu
+Y29tCg</bytes>
 														</object>
 														<array class="NSMutableArray" key="NSAttributes">
 															<dictionary>
 																<object class="NSFont" key="NSFont">
 																	<string key="NSName">Helvetica</string>
-																	<double key="NSSize">12</double>
+																	<double key="NSSize">14</double>
 																	<int key="NSfFlags">16</int>
 																</object>
-																<object class="NSParagraphStyle" key="NSParagraphStyle">
-																	<int key="NSAlignment">4</int>
-																	<nil key="NSTabStops"/>
+																<object class="NSParagraphStyle" key="NSParagraphStyle" id="472637562">
+																	<double key="NSTighteningFactorForTruncation">0.05000000074505806</double>
+																	<array key="NSTabStops">
+																		<object class="NSTextTab">
+																			<double key="NSLocation">28.300000000000001</double>
+																		</object>
+																		<object class="NSTextTab">
+																			<double key="NSLocation">56.649999999999999</double>
+																		</object>
+																		<object class="NSTextTab">
+																			<double key="NSLocation">85</double>
+																		</object>
+																		<object class="NSTextTab">
+																			<double key="NSLocation">113.34999999999999</double>
+																		</object>
+																		<object class="NSTextTab">
+																			<double key="NSLocation">141.69999999999999</double>
+																		</object>
+																		<object class="NSTextTab">
+																			<double key="NSLocation">170.05000000000001</double>
+																		</object>
+																		<object class="NSTextTab">
+																			<double key="NSLocation">198.40000000000001</double>
+																		</object>
+																		<object class="NSTextTab">
+																			<double key="NSLocation">226.75</double>
+																		</object>
+																		<object class="NSTextTab">
+																			<double key="NSLocation">255.09999999999999</double>
+																		</object>
+																		<object class="NSTextTab">
+																			<double key="NSLocation">283.44999999999999</double>
+																		</object>
+																		<object class="NSTextTab">
+																			<double key="NSLocation">311.80000000000001</double>
+																		</object>
+																		<object class="NSTextTab">
+																			<double key="NSLocation">340.14999999999998</double>
+																		</object>
+																	</array>
 																</object>
 															</dictionary>
 															<dictionary>
 																<object class="NSFont" key="NSFont">
 																	<string key="NSName">STHeitiSC-Light</string>
-																	<double key="NSSize">12</double>
+																	<double key="NSSize">14</double>
 																	<int key="NSfFlags">16</int>
 																</object>
-																<object class="NSParagraphStyle" key="NSParagraphStyle">
-																	<int key="NSAlignment">4</int>
-																	<nil key="NSTabStops"/>
-																</object>
+																<reference key="NSParagraphStyle" ref="472637562"/>
 															</dictionary>
 														</array>
 														<object class="NSMutableData" key="NSAttributeInfo">
-															<bytes key="NS.bytes">qQEAAgEDAA</bytes>
+															<bytes key="NS.bytes">AgCyAQE</bytes>
 														</object>
 														<nil key="NSDelegate"/>
 													</object>
@@ -156,7 +194,12 @@ Z3hpXzE5ODlAc2luYS5jb20iLAogICJtYWxlIiA6IHRydWUsCiAgIm5hbWUiIDogIuW8oOeOuiIKfQ</
 													<integer value="1" key="NSUnderline"/>
 												</dictionary>
 												<nil key="NSDefaultParagraphStyle"/>
-												<nil key="NSTextFinder"/>
+												<object class="NSTextFinder" key="NSTextFinder">
+													<reference key="NSTextFinderClient" ref="1020802061"/>
+													<int key="NSTextFinderStyle">1</int>
+													<bool key="NSIncrementalSearchingEnabled">NO</bool>
+													<bool key="NSIncrementalSearchingShouldDimContentView">YES</bool>
+												</object>
 												<int key="NSPreferredTextFinderStyle">1</int>
 											</object>
 											<int key="NSTVFlags">6</int>
@@ -486,7 +529,7 @@ wGw</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{349, 558}, {96, 22}}</string>
 							<reference key="NSSuperview" ref="1006"/>
-							<reference key="NSNextKeyView" ref="369647949"/>
+							<reference key="NSNextKeyView" ref="306852088"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="222757035">
@@ -548,7 +591,7 @@ wGw</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{565, 516}, {100, 32}}</string>
 							<reference key="NSSuperview" ref="1006"/>
-							<reference key="NSNextKeyView" ref="306852088"/>
+							<reference key="NSNextKeyView" ref="970886837"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="1044935164">
@@ -572,6 +615,7 @@ wGw</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{17, 20}, {713, 17}}</string>
 							<reference key="NSSuperview" ref="1006"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:1535</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="563643862">
@@ -591,7 +635,7 @@ wGw</bytes>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{447, 516}, {118, 32}}</string>
 							<reference key="NSSuperview" ref="1006"/>
-							<reference key="NSNextKeyView" ref="970886837"/>
+							<reference key="NSNextKeyView" ref="369647949"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="667686814">
@@ -615,7 +659,7 @@ wGw</bytes>
 					<reference key="NSSuperview"/>
 					<reference key="NSNextKeyView" ref="727245233"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1440, 878}}</string>
 				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
 				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
