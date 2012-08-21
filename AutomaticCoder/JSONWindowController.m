@@ -63,6 +63,12 @@
                 break;
             case kArray:
             {
+                if([self isDataArray:[json objectForKey:key]])
+                {
+                    [proterty appendFormat:@"@property (nonatomic,strong) NSArray *%@%@;\n",preName.stringValue,key];
+                    [import appendFormat:@"#import \"%@Entity.h\"",key];
+                    [self generateClass:[NSString stringWithFormat:@"%@Entity",key] forDic:[[json objectForKey:key]objectAtIndex:0]];
+                }
             }
                 break;
             case kDictionary:
@@ -123,6 +129,12 @@
                 [decode appendFormat:@"self.%@%@ = [aDecoder decodeObjectForKey:@\"zx_%@\"];\n ",preName.stringValue,key,key];
                 break;
             case kArray:
+            {
+                if([self isDataArray:[json objectForKey:key]])
+                {
+                    [config appendFormat:@"*********************************\n"];
+                }
+            }
                 break;
             case kDictionary:
                 [config appendFormat:@"self.%@%@  = [[%@Entity alloc] initWithJson:[json objectForKey:@\"%@\"]];\n ",preName.stringValue,key,key,key];
@@ -304,6 +316,43 @@
     
     
 }
+
+
+//表示该数组内有且只有字典 并且 结构一致。
+-(BOOL)isDataArray:(NSArray *)array
+{
+    if(array.count <=0 ) return NO;
+    for(id item in array)
+    {
+        if([self type:item] != kDictionary)
+        {
+            return NO;
+        }
+    }
+    
+    NSMutableSet *keys = [NSMutableSet set];
+    for(NSString *key in [[array objectAtIndex:0] allKeys])
+    {
+        [keys addObject:key];
+    }
+    
+    
+    for(id item in array)
+    {
+        NSMutableSet *newKeys = [NSMutableSet set];
+        for(NSString *key in [item allKeys])
+        {
+            [newKeys addObject:key];
+        }
+        
+        if([keys isEqualToSet:newKeys] == NO)
+        {
+            return NO;
+        }
+    }
+    return YES;
+}
+
 
 -(JsonValueType)type:(id)obj
 {
