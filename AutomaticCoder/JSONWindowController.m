@@ -15,6 +15,7 @@
 @implementation JSONWindowController
 @synthesize jsonContent;
 @synthesize jsonName;
+@synthesize preName;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -64,10 +65,11 @@
         switch (type) {
             case 0:
             case 1:
-                [proterty appendFormat:@"@property (nonatomic,strong) %@ *%@;\n",[self typeName:type],key];
+                [proterty appendFormat:@"@property (nonatomic,strong) %@ *%@%@;\n",[self typeName:type],preName.stringValue,key];
                 break;
             case 2:
-               [proterty appendFormat:@"@property (nonatomic,assign) %@ %@;\n",[self typeName:type],key];                break;
+               [proterty appendFormat:@"@property (nonatomic,assign) %@ %@%@;\n",[self typeName:type],preName.stringValue,key];
+                break;
             default:
                 break;
         }
@@ -112,14 +114,14 @@
         switch (type) {
             case 0:
             case 1:
-                [config appendFormat:@"self.%@  = [json objectForKey:@\"%@\"];\n ",key,key];
-                [encode appendFormat:@"[aCoder encodeObject:self.%@ forKey:@\"zx_%@\"];\n",key,key];
-                [decode appendFormat:@"self.%@ = [aDecoder decodeObjectForKey:@\"zx_%@\"];\n ",key,key];
+                [config appendFormat:@"self.%@%@  = [json objectForKey:@\"%@\"];\n ",preName.stringValue,key,key];
+                [encode appendFormat:@"[aCoder encodeObject:self.%@%@ forKey:@\"zx_%@\"];\n",preName.stringValue,key,key];
+                [decode appendFormat:@"self.%@%@ = [aDecoder decodeObjectForKey:@\"zx_%@\"];\n ",preName.stringValue,key,key];
                 break;
             case 2:
-                [config appendFormat:@"self.%@ = [[json objectForKey:@\"%@\"] booleanValue];\n ",key,key];
-                [encode appendFormat:@"[aCoder encodeBool:self.%@ forKey:@\"zx_%@\"];\n",key,key];
-                [decode appendFormat:@"self.%@ = [aDecoder decodeBoolForKey:@\"zx_%@\"];\n",key,key];
+                [config appendFormat:@"self.%@%@ = [[json objectForKey:@\"%@\"] booleanValue];\n ",preName.stringValue,key,key];
+                [encode appendFormat:@"[aCoder encodeBool:self.%@%@ forKey:@\"zx_%@\"];\n",preName.stringValue,key,key];
+                [decode appendFormat:@"self.%@%@ = [aDecoder decodeBoolForKey:@\"zx_%@\"];\n",preName.stringValue,key,key];
                 break;
             default:
                 break;

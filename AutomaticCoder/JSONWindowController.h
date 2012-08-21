@@ -21,6 +21,7 @@ typedef enum
 
 @property (unsafe_unretained) IBOutlet NSTextView *jsonContent;
 @property (weak) IBOutlet NSTextField *jsonName;
+@property (weak) IBOutlet NSTextField *preName;
 
 - (IBAction)generateClass:(id)sender;
 

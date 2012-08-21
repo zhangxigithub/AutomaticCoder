@@ -11,10 +11,10 @@
 
 @interface JsonObject : NSObject<NSCoding>
 
-@property(nonatomic,strong) NSNumber *age;
-@property(nonatomic,strong) NSString *email;
-@property(nonatomic,strong) NSString *name;
-@property(nonatomic,assign) BOOL male;
+@property (nonatomic,strong) NSNumber *zxage;
+@property (nonatomic,strong) NSString *zxemail;
+@property (nonatomic,strong) NSString *zxname;
+@property (nonatomic,assign) BOOL zxmale;
  
 
 -(void)config:(NSDictionary *)json;

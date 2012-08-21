@@ -14,20 +14,20 @@
 {
     if(json != nil)
     {
-       self.age  = [json objectForKey:@"age"];
- self.email  = [json objectForKey:@"email"];
- self.name  = [json objectForKey:@"name"];
- self.male = [[json objectForKey:@"male"] booleanValue];
+       self.zxage  = [json objectForKey:@"age"];
+ self.zxemail  = [json objectForKey:@"email"];
+ self.zxname  = [json objectForKey:@"name"];
+ self.zxmale = [[json objectForKey:@"male"] booleanValue];
  
     }
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:self.age forKey:@"zx_age"];
-[aCoder encodeObject:self.email forKey:@"zx_email"];
-[aCoder encodeObject:self.name forKey:@"zx_name"];
-[aCoder encodeBool:self.male forKey:@"zx_male"];
+    [aCoder encodeObject:self.zxage forKey:@"zx_age"];
+[aCoder encodeObject:self.zxemail forKey:@"zx_email"];
+[aCoder encodeObject:self.zxname forKey:@"zx_name"];
+[aCoder encodeBool:self.zxmale forKey:@"zx_male"];
 
 }
 
@@ -37,10 +37,10 @@
     self = [super init];
     if(self)
     {
-        self.age = [aDecoder decodeObjectForKey:@"zx_age"];
- self.email = [aDecoder decodeObjectForKey:@"zx_email"];
- self.name = [aDecoder decodeObjectForKey:@"zx_name"];
- self.male = [aDecoder decodeBoolForKey:@"zx_male"];
+        self.zxage = [aDecoder decodeObjectForKey:@"zx_age"];
+ self.zxemail = [aDecoder decodeObjectForKey:@"zx_email"];
+ self.zxname = [aDecoder decodeObjectForKey:@"zx_name"];
+ self.zxmale = [aDecoder decodeBoolForKey:@"zx_male"];
 
     }
     return self;
