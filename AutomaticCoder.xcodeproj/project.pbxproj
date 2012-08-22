@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		43368A5F15E48828006AA4F4 /* my_computer-1.icns in Resources */ = {isa = PBXBuildFile; fileRef = 43368A5E15E48828006AA4F4 /* my_computer-1.icns */; };
+		43368AA215E4AB5D006AA4F4 /* JSONPropertyWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43368AA015E4AB5D006AA4F4 /* JSONPropertyWindowController.m */; };
+		43368AA315E4AB5D006AA4F4 /* JSONPropertyWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43368AA115E4AB5D006AA4F4 /* JSONPropertyWindowController.xib */; };
 		4349430C15E1D6ED006A427A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4349430B15E1D6ED006A427A /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4349431A15E1D7B3006A427A /* JSONWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4349431815E1D7B3006A427A /* JSONWindowController.m */; };
 		4349431B15E1D7B3006A427A /* JSONWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4349431915E1D7B3006A427A /* JSONWindowController.xib */; };
@@ -23,6 +25,9 @@
 
 /* Begin PBXFileReference section */
 		43368A5E15E48828006AA4F4 /* my_computer-1.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "my_computer-1.icns"; sourceTree = "<group>"; };
+		43368A9F15E4AB5D006AA4F4 /* JSONPropertyWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONPropertyWindowController.h; sourceTree = "<group>"; };
+		43368AA015E4AB5D006AA4F4 /* JSONPropertyWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONPropertyWindowController.m; sourceTree = "<group>"; };
+		43368AA115E4AB5D006AA4F4 /* JSONPropertyWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSONPropertyWindowController.xib; sourceTree = "<group>"; };
 		4349430A15E1D6ED006A427A /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		4349430B15E1D6ED006A427A /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		4349431715E1D7B3006A427A /* JSONWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONWindowController.h; sourceTree = "<group>"; };
@@ -105,6 +110,9 @@
 				4349431715E1D7B3006A427A /* JSONWindowController.h */,
 				4349431815E1D7B3006A427A /* JSONWindowController.m */,
 				4349431915E1D7B3006A427A /* JSONWindowController.xib */,
+				43368A9F15E4AB5D006AA4F4 /* JSONPropertyWindowController.h */,
+				43368AA015E4AB5D006AA4F4 /* JSONPropertyWindowController.m */,
+				43368AA115E4AB5D006AA4F4 /* JSONPropertyWindowController.xib */,
 				4349431F15E1E088006A427A /* json.zx1 */,
 				4349432015E1E088006A427A /* json.zx2 */,
 				438EDC2E15E1D08700D6B752 /* Supporting Files */,
@@ -182,6 +190,7 @@
 				4349432115E1E088006A427A /* json.zx1 in Resources */,
 				4349432215E1E088006A427A /* json.zx2 in Resources */,
 				43368A5F15E48828006AA4F4 /* my_computer-1.icns in Resources */,
+				43368AA315E4AB5D006AA4F4 /* JSONPropertyWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,6 +205,7 @@
 				438EDC3B15E1D08700D6B752 /* AppDelegate.m in Sources */,
 				4349430C15E1D6ED006A427A /* JSONKit.m in Sources */,
 				4349431A15E1D7B3006A427A /* JSONWindowController.m in Sources */,
+				43368AA215E4AB5D006AA4F4 /* JSONPropertyWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

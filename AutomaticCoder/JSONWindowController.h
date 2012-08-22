@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "JSONKit.h"
+#import "JSONPropertyWindowController.h"
 
 typedef enum
 {
@@ -22,6 +23,8 @@ typedef enum
 @interface JSONWindowController : NSWindowController
 {
     NSString *path;
+    NSArrayController *arrayController;
+    JSONPropertyWindowController *propertyWindowController;
 }
 @property (unsafe_unretained) IBOutlet NSTextView *jsonContent;
 @property (weak) IBOutlet NSTextField *jsonName;

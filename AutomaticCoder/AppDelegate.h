@@ -12,7 +12,10 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 {
     JSONWindowController *json;
+
 }
+
+
 @property (assign) IBOutlet NSWindow *window;
 
 

@@ -197,7 +197,90 @@
     if(json != nil)
     jsonContent.string = [json JSONStringWithOptions:JKSerializeOptionPretty error:nil];
 }
+-(void)showPropertys:(NSDictionary *)json
+{
 
+    NSArrayController *array = [[NSArrayController alloc] init];
+    
+    
+    for(NSString *key in [json allKeys])
+    {
+        JsonValueType type = [self type:[json objectForKey:key]];
+        switch (type) {
+            case kString:
+            {
+                NSDictionary *dic =
+                @{
+                @"jsonKey":key,
+                @"jsonType":@"string",
+                @"classKey":[NSString stringWithFormat:@"%@%@",preName.stringValue,key],
+                @"classType":@"NSString",
+                };
+                [array addObject:[dic mutableCopy]];
+            }
+                break;
+            case kNumber:
+            {
+                NSDictionary *dic =
+                @{
+                @"jsonKey":key,
+                @"jsonType":@"number",
+                @"classKey":[NSString stringWithFormat:@"%@%@",preName.stringValue,key],
+                @"classType":@"NSNumber",
+                };
+                [array addObject:[dic mutableCopy]];
+            }
+                break;
+            case kArray:
+            {
+                {
+                    NSDictionary *dic =
+                    @{
+                    @"jsonKey":key,
+                    @"jsonType":@"array",
+                    @"classKey":[NSString stringWithFormat:@"%@%@",preName.stringValue,key],
+                    @"classType":@"NSArray",
+                    };
+                    [array addObject:[dic mutableCopy]];
+                }
+                break;
+            }
+                break;
+            case kDictionary:
+            {
+                NSDictionary *dic =
+                @{
+                @"jsonKey":key,
+                @"jsonType":@"object",
+                @"classKey":[NSString stringWithFormat:@"%@%@",preName.stringValue,key],
+                @"classType":@"NSDictionary",
+                };
+                [array addObject:[dic mutableCopy]];
+            }
+                break;
+            case kBool:
+            {
+                NSDictionary *dic =
+                @{
+                @"jsonKey":key,
+                @"jsonType":@"bool",
+                @"classKey":[NSString stringWithFormat:@"%@%@",preName.stringValue,key],
+                @"classType":@"BOOL",
+                };
+                [array addObject:[dic mutableCopy]];
+            }
+                break;
+            default:
+                break;
+        }
+    }
+
+    
+   propertyWindowController = [[JSONPropertyWindowController alloc] initWithWindowNibName:@"JSONPropertyWindowController"];
+    propertyWindowController.arrayController = array;
+    [propertyWindowController.window makeKeyAndOrderFront:nil];
+    
+}
 
 
 
@@ -212,6 +295,15 @@
         jsonContent.string = @"介个...json格式不对吧。。。。。";
         return;
     }
+    
+    [self showPropertys:json];
+    
+    
+    
+    
+    
+    return;
+    
     NSOpenPanel *panel = [NSOpenPanel openPanel];
     panel.canChooseDirectories = YES;
     panel.canChooseFiles = NO;
