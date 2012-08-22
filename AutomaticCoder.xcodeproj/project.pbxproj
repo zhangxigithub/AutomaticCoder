@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43368A5F15E48828006AA4F4 /* my_computer-1.icns in Resources */ = {isa = PBXBuildFile; fileRef = 43368A5E15E48828006AA4F4 /* my_computer-1.icns */; };
 		4349430C15E1D6ED006A427A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4349430B15E1D6ED006A427A /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4349431A15E1D7B3006A427A /* JSONWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4349431815E1D7B3006A427A /* JSONWindowController.m */; };
 		4349431B15E1D7B3006A427A /* JSONWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4349431915E1D7B3006A427A /* JSONWindowController.xib */; };
 		4349432115E1E088006A427A /* json.zx1 in Resources */ = {isa = PBXBuildFile; fileRef = 4349431F15E1E088006A427A /* json.zx1 */; };
 		4349432215E1E088006A427A /* json.zx2 in Resources */ = {isa = PBXBuildFile; fileRef = 4349432015E1E088006A427A /* json.zx2 */; };
-		4349432C15E209CD006A427A /* my_computer-1.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4349432B15E209CD006A427A /* my_computer-1.icns */; };
 		438EDC2815E1D08700D6B752 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438EDC2715E1D08700D6B752 /* Cocoa.framework */; };
 		438EDC3215E1D08700D6B752 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 438EDC3015E1D08700D6B752 /* InfoPlist.strings */; };
 		438EDC3415E1D08700D6B752 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 438EDC3315E1D08700D6B752 /* main.m */; };
@@ -22,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		43368A5E15E48828006AA4F4 /* my_computer-1.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "my_computer-1.icns"; sourceTree = "<group>"; };
 		4349430A15E1D6ED006A427A /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		4349430B15E1D6ED006A427A /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		4349431715E1D7B3006A427A /* JSONWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONWindowController.h; sourceTree = "<group>"; };
@@ -29,7 +30,6 @@
 		4349431915E1D7B3006A427A /* JSONWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSONWindowController.xib; sourceTree = "<group>"; };
 		4349431F15E1E088006A427A /* json.zx1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json.zx1; sourceTree = "<group>"; };
 		4349432015E1E088006A427A /* json.zx2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json.zx2; sourceTree = "<group>"; };
-		4349432B15E209CD006A427A /* my_computer-1.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "my_computer-1.icns"; sourceTree = "<group>"; };
 		438EDC2315E1D08700D6B752 /* AutomaticCoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutomaticCoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		438EDC2715E1D08700D6B752 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		438EDC2A15E1D08700D6B752 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -60,7 +60,6 @@
 		438EDC1815E1D08700D6B752 = {
 			isa = PBXGroup;
 			children = (
-				4349432B15E209CD006A427A /* my_computer-1.icns */,
 				438EDC2D15E1D08700D6B752 /* AutomaticCoder */,
 				438EDC2615E1D08700D6B752 /* Frameworks */,
 				438EDC2415E1D08700D6B752 /* Products */,
@@ -97,6 +96,7 @@
 		438EDC2D15E1D08700D6B752 /* AutomaticCoder */ = {
 			isa = PBXGroup;
 			children = (
+				43368A5E15E48828006AA4F4 /* my_computer-1.icns */,
 				4349430A15E1D6ED006A427A /* JSONKit.h */,
 				4349430B15E1D6ED006A427A /* JSONKit.m */,
 				438EDC3915E1D08700D6B752 /* AppDelegate.h */,
@@ -181,7 +181,7 @@
 				4349431B15E1D7B3006A427A /* JSONWindowController.xib in Resources */,
 				4349432115E1E088006A427A /* json.zx1 in Resources */,
 				4349432215E1E088006A427A /* json.zx2 in Resources */,
-				4349432C15E209CD006A427A /* my_computer-1.icns in Resources */,
+				43368A5F15E48828006AA4F4 /* my_computer-1.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
