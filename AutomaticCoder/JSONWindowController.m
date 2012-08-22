@@ -36,8 +36,6 @@
 
 -(void)generateClass:(NSString *)name forDic:(NSDictionary *)json
 {
-    NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    
     //准备模板
     NSMutableString *templateH =[[NSMutableString alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"json" ofType:@"zx1"]
                                                                        encoding:NSUTF8StringEncoding
@@ -169,24 +167,22 @@
     
     
     //写文件
-    [templateH writeToFile:[NSString stringWithFormat:@"%@/%@.h",docDir,name]
+    NSLog(@"%@",[NSString stringWithFormat:@"%@/%@.h",path,name]);
+    [templateH writeToFile:[NSString stringWithFormat:@"%@/%@.h",path,name]
                 atomically:NO
                   encoding:NSUTF8StringEncoding
                      error:nil];
-    [templateM writeToFile:[NSString stringWithFormat:@"%@/%@.m",docDir,name]
+    [templateM writeToFile:[NSString stringWithFormat:@"%@/%@.m",path,name]
                 atomically:NO
                   encoding:NSUTF8StringEncoding
                      error:nil];
-    
-    jsonContent.string = @"生成了.h.m(ARC)文件，给您放桌面上了，看看格式对不对。哦，对了，目前还不支持json里面嵌套数组和字典，以后可能会加上。";
+
     
 }
 
 
 
-
-
-- (IBAction)useTextURL:(id)sender {
+- (IBAction)useTestURL:(id)sender {
     jsonURL.stringValue = @"http://zxapi.sinaapp.com";
 }
 
@@ -196,8 +192,9 @@
     NSData *data = [NSURLConnection sendSynchronousRequest:request
                                                         returningResponse:nil
                                                                     error:nil];
-    NSDictionary *json = [data objectFromJSONData];
     
+    NSDictionary *json = [data objectFromJSONData];
+    if(json != nil)
     jsonContent.string = [json JSONStringWithOptions:JKSerializeOptionPretty error:nil];
 }
 
@@ -205,6 +202,9 @@
 
 
 - (IBAction)generateClass:(id)sender {
+    
+    
+    
     NSDictionary *json   = [jsonContent.string objectFromJSONString];
     
     if(json == nil)
@@ -212,10 +212,18 @@
         jsonContent.string = @"介个...json格式不对吧。。。。。";
         return;
     }
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    panel.canChooseDirectories = YES;
+    panel.canChooseFiles = NO;
+    [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
+        
+        path = [panel.URL path];
+        [self generateClass:jsonName.stringValue forDic:json];
+        jsonContent.string = @"生成了.h.m(ARC)文件，给您放到您选的文件夹了，看看格式对不对。";
     
-    [self generateClass:jsonName.stringValue forDic:json];
+    }];
+
     
-    jsonContent.string = @"生成了.h.m(ARC)文件，给您放桌面上了，看看格式对不对。";     
 }
 
 

@@ -20,17 +20,23 @@ typedef enum
 
 
 @interface JSONWindowController : NSWindowController
-
+{
+    NSString *path;
+}
 @property (unsafe_unretained) IBOutlet NSTextView *jsonContent;
 @property (weak) IBOutlet NSTextField *jsonName;
 @property (weak) IBOutlet NSTextField *preName;
 @property (weak) IBOutlet NSTextField *jsonURL;
 
-- (IBAction)useTextURL:(id)sender;
-
-
+- (IBAction)useTestURL:(id)sender;
 - (IBAction)getJSONWithURL:(id)sender;
-
 - (IBAction)generateClass:(id)sender;
+
+
+
+
+-(BOOL)isDataArray:(NSArray *)array;
+-(JsonValueType)type:(id)obj;
+-(NSString *)typeName:(JsonValueType)type;
 
 @end
