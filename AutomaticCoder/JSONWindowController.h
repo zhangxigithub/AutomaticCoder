@@ -23,6 +23,7 @@ typedef enum
 @interface JSONWindowController : NSWindowController
 {
     NSString *path;
+    NSArrayController *array;
     NSArrayController *arrayController;
     JSONPropertyWindowController *propertyWindowController;
 }
@@ -34,6 +35,7 @@ typedef enum
 - (IBAction)useTestURL:(id)sender;
 - (IBAction)getJSONWithURL:(id)sender;
 - (IBAction)generateClass:(id)sender;
+- (IBAction)checkProperty:(id)sender;
 
 
 

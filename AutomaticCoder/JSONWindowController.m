@@ -31,6 +31,7 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
+    array = [[NSArrayController alloc] init];
 }
 
 
@@ -64,15 +65,15 @@
                 if([self isDataArray:[json objectForKey:key]])
                 {
                     [proterty appendFormat:@"@property (nonatomic,strong) NSMutableArray *%@%@;\n",preName.stringValue,key];
-                    [import appendFormat:@"#import \"%@Entity.h\"",key];
-                    [self generateClass:[NSString stringWithFormat:@"%@Entity",key] forDic:[[json objectForKey:key]objectAtIndex:0]];
+                    [import appendFormat:@"#import \"%@Entity.h\"",[self uppercaseFirstChar:key]];
+                    [self generateClass:[NSString stringWithFormat:@"%@Entity",[self uppercaseFirstChar:key]] forDic:[[json objectForKey:key]objectAtIndex:0]];
                 }
             }
                 break;
             case kDictionary:
-                [proterty appendFormat:@"@property (nonatomic,strong) %@Entity *%@%@;\n",key,preName.stringValue,key];
-                [import appendFormat:@"#import \"%@Entity.h\"",key];
-                [self generateClass:[NSString stringWithFormat:@"%@Entity",key] forDic:[json objectForKey:key]];
+                [proterty appendFormat:@"@property (nonatomic,strong) %@Entity *%@%@;\n",[self uppercaseFirstChar:key],preName.stringValue,key];
+                [import appendFormat:@"#import \"%@Entity.h\"",[self uppercaseFirstChar:key]];
+                [self generateClass:[NSString stringWithFormat:@"%@Entity",[self uppercaseFirstChar:key]] forDic:[json objectForKey:key]];
                 
                 break;
             case kBool:
@@ -133,7 +134,7 @@
                     [config appendFormat:@"self.%@%@ = [NSMutableArray array];\n",preName.stringValue,key];
                     [config appendFormat:@"for(NSDictionary *item in [json objectForKey:@\"%@\"])\n",key];
                     [config appendString:@"{\n"];
-                    [config appendFormat:@"[self.%@%@ addObject:[[%@Entity alloc] initWithJson:item]];\n",preName.stringValue,key,key];
+                    [config appendFormat:@"[self.%@%@ addObject:[[%@Entity alloc] initWithJson:item]];\n",preName.stringValue,key,[self uppercaseFirstChar:key]];
                     [config appendString:@"}\n"];
                     [encode appendFormat:@"[aCoder encodeObject:self.%@%@ forKey:@\"zx_%@\"];\n",preName.stringValue,key,key];
                     [decode appendFormat:@"self.%@%@ = [aDecoder decodeObjectForKey:@\"zx_%@\"];\n ",preName.stringValue,key,key];
@@ -141,7 +142,7 @@
             }
                 break;
             case kDictionary:
-                [config appendFormat:@"self.%@%@  = [[%@Entity alloc] initWithJson:[json objectForKey:@\"%@\"]];\n ",preName.stringValue,key,key,key];
+                [config appendFormat:@"self.%@%@  = [[%@Entity alloc] initWithJson:[json objectForKey:@\"%@\"]];\n ",preName.stringValue,key,[self uppercaseFirstChar:key],key];
                 [encode appendFormat:@"[aCoder encodeObject:self.%@%@ forKey:@\"zx_%@\"];\n",preName.stringValue,key,key];
                 [decode appendFormat:@"self.%@%@ = [aDecoder decodeObjectForKey:@\"zx_%@\"];\n ",preName.stringValue,key,key];
                 
@@ -197,12 +198,9 @@
     if(json != nil)
     jsonContent.string = [json JSONStringWithOptions:JKSerializeOptionPretty error:nil];
 }
--(void)showPropertys:(NSDictionary *)json
-{
 
-    NSArrayController *array = [[NSArrayController alloc] init];
-    
-    
+-(void)generateProperty:(NSDictionary *)json withName:(NSString *)className;
+{
     for(NSString *key in [json allKeys])
     {
         JsonValueType type = [self type:[json objectForKey:key]];
@@ -215,6 +213,7 @@
                 @"jsonType":@"string",
                 @"classKey":[NSString stringWithFormat:@"%@%@",preName.stringValue,key],
                 @"classType":@"NSString",
+                @"className":className
                 };
                 [array addObject:[dic mutableCopy]];
             }
@@ -227,6 +226,8 @@
                 @"jsonType":@"number",
                 @"classKey":[NSString stringWithFormat:@"%@%@",preName.stringValue,key],
                 @"classType":@"NSNumber",
+                @"className":className
+
                 };
                 [array addObject:[dic mutableCopy]];
             }
@@ -239,9 +240,15 @@
                     @"jsonKey":key,
                     @"jsonType":@"array",
                     @"classKey":[NSString stringWithFormat:@"%@%@",preName.stringValue,key],
-                    @"classType":@"NSArray",
+                    @"classType":[NSString stringWithFormat:@"NSArray(%@)",[self uppercaseFirstChar:key]],
+                    @"className":className
                     };
                     [array addObject:[dic mutableCopy]];
+                    if([self isDataArray:[json objectForKey:key]])
+                    {
+                        [self generateProperty:[[json objectForKey:key] objectAtIndex:0]
+                                      withName:[self uppercaseFirstChar:key]];
+                    }
                 }
                 break;
             }
@@ -250,22 +257,26 @@
             {
                 NSDictionary *dic =
                 @{
-                @"jsonKey":key,
+                @"jsonKey":[self lowercaseFirstChar:key],
                 @"jsonType":@"object",
                 @"classKey":[NSString stringWithFormat:@"%@%@",preName.stringValue,key],
-                @"classType":@"NSDictionary",
+                @"classType":[self uppercaseFirstChar:key],
+                @"className":className
                 };
                 [array addObject:[dic mutableCopy]];
+                [self generateProperty:[json objectForKey:key]
+                              withName:[self uppercaseFirstChar:key]];
             }
                 break;
             case kBool:
             {
                 NSDictionary *dic =
                 @{
-                @"jsonKey":key,
+                @"jsonKey":[self lowercaseFirstChar:key],
                 @"jsonType":@"bool",
                 @"classKey":[NSString stringWithFormat:@"%@%@",preName.stringValue,key],
                 @"classType":@"BOOL",
+                @"className":className
                 };
                 [array addObject:[dic mutableCopy]];
             }
@@ -274,7 +285,24 @@
                 break;
         }
     }
+}
 
+-(NSString *)uppercaseFirstChar:(NSString *)str
+{
+    return [NSString stringWithFormat:@"%@%@",[[str substringToIndex:1] uppercaseString],[str substringWithRange:NSMakeRange(1, str.length-1)]];
+}
+-(NSString *)lowercaseFirstChar:(NSString *)str
+{
+        return [NSString stringWithFormat:@"%@%@",[[str substringToIndex:1] lowercaseString],[str substringWithRange:NSMakeRange(1, str.length-1)]];
+}
+
+-(void)showPropertys:(NSDictionary *)json
+{
+    array = nil;
+    array = [[NSArrayController alloc] init];
+    
+    [self generateProperty:json withName:jsonName.stringValue];
+    
     
    propertyWindowController = [[JSONPropertyWindowController alloc] initWithWindowNibName:@"JSONPropertyWindowController"];
     propertyWindowController.arrayController = array;
@@ -295,19 +323,14 @@
         jsonContent.string = @"介个...json格式不对吧。。。。。";
         return;
     }
-    
-    [self showPropertys:json];
-    
-    
-    
-    
-    
-    return;
+
     
     NSOpenPanel *panel = [NSOpenPanel openPanel];
     panel.canChooseDirectories = YES;
     panel.canChooseFiles = NO;
     [panel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
+        
+        if(result == 0) return ;
         
         path = [panel.URL path];
         [self generateClass:jsonName.stringValue forDic:json];
@@ -318,12 +341,25 @@
     
 }
 
+- (IBAction)checkProperty:(id)sender {
+    
+    NSDictionary *json   = [jsonContent.string objectFromJSONString];
+    
+    if(json == nil)
+    {
+        jsonContent.string = @"介个...json格式不对吧。。。。。";
+        return;
+    }
+    
+    [self showPropertys:json];
+}
+
 
 //表示该数组内有且只有字典 并且 结构一致。
--(BOOL)isDataArray:(NSArray *)array
+-(BOOL)isDataArray:(NSArray *)theArray
 {
-    if(array.count <=0 ) return NO;
-    for(id item in array)
+    if(theArray.count <=0 ) return NO;
+    for(id item in theArray)
     {
         if([self type:item] != kDictionary)
         {
@@ -332,13 +368,13 @@
     }
     
     NSMutableSet *keys = [NSMutableSet set];
-    for(NSString *key in [[array objectAtIndex:0] allKeys])
+    for(NSString *key in [[theArray objectAtIndex:0] allKeys])
     {
         [keys addObject:key];
     }
     
     
-    for(id item in array)
+    for(id item in theArray)
     {
         NSMutableSet *newKeys = [NSMutableSet set];
         for(NSString *key in [item allKeys])
