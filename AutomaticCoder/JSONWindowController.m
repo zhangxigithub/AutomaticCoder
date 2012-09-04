@@ -188,7 +188,11 @@
 }
 
 - (IBAction)getJSONWithURL:(id)sender {
-    NSURL *url = [NSURL URLWithString:jsonURL.stringValue];
+    
+    NSString *str = [jsonURL.stringValue stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    
+    NSURL *url = [NSURL URLWithString:str];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     NSData *data = [NSURLConnection sendSynchronousRequest:request
                                                         returningResponse:nil
@@ -320,7 +324,7 @@
     
     if(json == nil)
     {
-        jsonContent.string = @"介个...json格式不对吧。。。。。";
+        jsonContent.string = @"json is invalid.";
         return;
     }
 
@@ -334,7 +338,7 @@
         
         path = [panel.URL path];
         [self generateClass:jsonName.stringValue forDic:json];
-        jsonContent.string = @"生成了.h.m(ARC)文件，给您放到您选的文件夹了，看看格式对不对。";
+        jsonContent.string = @"generate .h.m(ARC)files，put those to the folder";
     
     }];
 
@@ -347,7 +351,7 @@
     
     if(json == nil)
     {
-        jsonContent.string = @"介个...json格式不对吧。。。。。";
+        jsonContent.string = @"json is invalid.";
         return;
     }
     

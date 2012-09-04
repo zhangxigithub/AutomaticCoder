@@ -29,4 +29,8 @@
     json = [[JSONWindowController alloc] initWithWindowNibName:@"JSONWindowController"];
     [[json window] makeKeyAndOrderFront:nil];
 }
+
+- (IBAction)donate:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://zxapi.sinaapp.com/paypal.html"]];
+}
 @end

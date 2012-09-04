@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		43368A5F15E48828006AA4F4 /* my_computer-1.icns in Resources */ = {isa = PBXBuildFile; fileRef = 43368A5E15E48828006AA4F4 /* my_computer-1.icns */; };
 		43368AA215E4AB5D006AA4F4 /* JSONPropertyWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43368AA015E4AB5D006AA4F4 /* JSONPropertyWindowController.m */; };
 		43368AA315E4AB5D006AA4F4 /* JSONPropertyWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43368AA115E4AB5D006AA4F4 /* JSONPropertyWindowController.xib */; };
 		4349430C15E1D6ED006A427A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4349430B15E1D6ED006A427A /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -15,6 +14,7 @@
 		4349431B15E1D7B3006A427A /* JSONWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4349431915E1D7B3006A427A /* JSONWindowController.xib */; };
 		4349432115E1E088006A427A /* json.zx1 in Resources */ = {isa = PBXBuildFile; fileRef = 4349431F15E1E088006A427A /* json.zx1 */; };
 		4349432215E1E088006A427A /* json.zx2 in Resources */ = {isa = PBXBuildFile; fileRef = 4349432015E1E088006A427A /* json.zx2 */; };
+		437AAE1A15E63843005CC126 /* icons.icns in Resources */ = {isa = PBXBuildFile; fileRef = 437AAE1915E63843005CC126 /* icons.icns */; };
 		438EDC2815E1D08700D6B752 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 438EDC2715E1D08700D6B752 /* Cocoa.framework */; };
 		438EDC3215E1D08700D6B752 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 438EDC3015E1D08700D6B752 /* InfoPlist.strings */; };
 		438EDC3415E1D08700D6B752 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 438EDC3315E1D08700D6B752 /* main.m */; };
@@ -24,7 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		43368A5E15E48828006AA4F4 /* my_computer-1.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "my_computer-1.icns"; sourceTree = "<group>"; };
 		43368A9F15E4AB5D006AA4F4 /* JSONPropertyWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONPropertyWindowController.h; sourceTree = "<group>"; };
 		43368AA015E4AB5D006AA4F4 /* JSONPropertyWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONPropertyWindowController.m; sourceTree = "<group>"; };
 		43368AA115E4AB5D006AA4F4 /* JSONPropertyWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSONPropertyWindowController.xib; sourceTree = "<group>"; };
@@ -35,6 +34,8 @@
 		4349431915E1D7B3006A427A /* JSONWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSONWindowController.xib; sourceTree = "<group>"; };
 		4349431F15E1E088006A427A /* json.zx1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json.zx1; sourceTree = "<group>"; };
 		4349432015E1E088006A427A /* json.zx2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json.zx2; sourceTree = "<group>"; };
+		435388BC15E70E3E00D45C0E /* AutomaticCoder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AutomaticCoder.entitlements; sourceTree = "<group>"; };
+		437AAE1915E63843005CC126 /* icons.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icons.icns; sourceTree = "<group>"; };
 		438EDC2315E1D08700D6B752 /* AutomaticCoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutomaticCoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		438EDC2715E1D08700D6B752 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		438EDC2A15E1D08700D6B752 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -65,6 +66,7 @@
 		438EDC1815E1D08700D6B752 = {
 			isa = PBXGroup;
 			children = (
+				437AAE1915E63843005CC126 /* icons.icns */,
 				438EDC2D15E1D08700D6B752 /* AutomaticCoder */,
 				438EDC2615E1D08700D6B752 /* Frameworks */,
 				438EDC2415E1D08700D6B752 /* Products */,
@@ -101,7 +103,7 @@
 		438EDC2D15E1D08700D6B752 /* AutomaticCoder */ = {
 			isa = PBXGroup;
 			children = (
-				43368A5E15E48828006AA4F4 /* my_computer-1.icns */,
+				435388BC15E70E3E00D45C0E /* AutomaticCoder.entitlements */,
 				4349430A15E1D6ED006A427A /* JSONKit.h */,
 				4349430B15E1D6ED006A427A /* JSONKit.m */,
 				438EDC3915E1D08700D6B752 /* AppDelegate.h */,
@@ -189,8 +191,8 @@
 				4349431B15E1D7B3006A427A /* JSONWindowController.xib in Resources */,
 				4349432115E1E088006A427A /* json.zx1 in Resources */,
 				4349432215E1E088006A427A /* json.zx2 in Resources */,
-				43368A5F15E48828006AA4F4 /* my_computer-1.icns in Resources */,
 				43368AA315E4AB5D006AA4F4 /* JSONPropertyWindowController.xib in Resources */,
+				437AAE1A15E63843005CC126 /* icons.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,12 +293,15 @@
 		438EDC4215E1D08800D6B752 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = AutomaticCoder/AutomaticCoder.entitlements;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutomaticCoder/AutomaticCoder-Prefix.pch";
 				INFOPLIST_FILE = "AutomaticCoder/AutomaticCoder-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -304,12 +309,15 @@
 		438EDC4315E1D08800D6B752 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = AutomaticCoder/AutomaticCoder.entitlements;
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutomaticCoder/AutomaticCoder-Prefix.pch";
 				INFOPLIST_FILE = "AutomaticCoder/AutomaticCoder-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

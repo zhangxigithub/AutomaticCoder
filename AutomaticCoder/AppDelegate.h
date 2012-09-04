@@ -20,6 +20,7 @@
 
 
 - (IBAction)json:(id)sender;
+- (IBAction)donate:(id)sender;
 
 
 @end
