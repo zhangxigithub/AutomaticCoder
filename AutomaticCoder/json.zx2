@@ -39,6 +39,11 @@
     return self;
 }
 
-
+- (NSString *) description
+{
+    NSString *result = @"";
+    #description#
+    return result;
+}
 
 @end

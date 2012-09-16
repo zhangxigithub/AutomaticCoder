@@ -23,6 +23,12 @@
 {
 
 }
+- (NSString *) description
+{
+    NSString *result = @"";
+    result = [result stringByAppendingFormat:@"%@ : %@\n",@"",@""];
+    return result;
+}
 
 - (IBAction)json:(id)sender {
 
