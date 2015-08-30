@@ -1,0 +1,48 @@
+//
+//  
+//  AutomaticCoder
+//
+//  Created by 张玺自动代码生成器   http://zhangxi.me
+//  Copyright (c) 2012年 me.zhangxi. All rights reserved.
+//
+
+
+class Plan: NSObject,NSCoding {
+
+
+convenience init(json data:JSON)
+{
+self.init()
+
+for theItem in data["planList"].array ?? [JSON]()
+{
+    let item = PlanItem(json: theItem)
+    items.append(item)
+}
+self.percent      = data["percent"].floatValue/100
+self.continueDays = data["continueDays"].intValue
+self.firstDay     = PM.date(data["firstDay"].string ?? "2015-08-29")
+}
+
+
+
+
+func encodeWithCoder(aCoder: NSCoder) {
+
+aCoder.encodeObject(date, forKey: "date")
+aCoder.encodeInteger((continueDays), forKey: "continueDays")
+aCoder.encodeFloat(percent, forKey: "percent")
+aCoder.encodeObject(items, forKey: "items")
+aCoder.encodeObject(firstDay, forKey: "firstDay")
+}
+
+convenience required init(coder aDecoder: NSCoder) {
+self.init()
+
+self.date         = aDecoder.decodeObjectForKey("date") as! String
+self.firstDay     = aDecoder.decodeObjectForKey("firstDay") as! NSDate
+self.items        = aDecoder.decodeObjectForKey("items") as? Array<PlanItem> ?? [PlanItem]()
+self.percent      = aDecoder.decodeFloatForKey("percent")
+self.continueDays = Int(aDecoder.decodeIntegerForKey("continueDays"))
+
+}

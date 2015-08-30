@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33618AF31B92BC080060B08F /* swift.temp in Resources */ = {isa = PBXBuildFile; fileRef = 33618AF21B92BC080060B08F /* swift.temp */; };
 		43368AA215E4AB5D006AA4F4 /* JSONPropertyWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 43368AA015E4AB5D006AA4F4 /* JSONPropertyWindowController.m */; };
 		43368AA315E4AB5D006AA4F4 /* JSONPropertyWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43368AA115E4AB5D006AA4F4 /* JSONPropertyWindowController.xib */; };
-		4349430C15E1D6ED006A427A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4349430B15E1D6ED006A427A /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4349431A15E1D7B3006A427A /* JSONWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4349431815E1D7B3006A427A /* JSONWindowController.m */; };
 		4349431B15E1D7B3006A427A /* JSONWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4349431915E1D7B3006A427A /* JSONWindowController.xib */; };
 		4349432115E1E088006A427A /* json.zx1 in Resources */ = {isa = PBXBuildFile; fileRef = 4349431F15E1E088006A427A /* json.zx1 */; };
@@ -24,11 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		33618AF21B92BC080060B08F /* swift.temp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = swift.temp; sourceTree = "<group>"; };
 		43368A9F15E4AB5D006AA4F4 /* JSONPropertyWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONPropertyWindowController.h; sourceTree = "<group>"; };
 		43368AA015E4AB5D006AA4F4 /* JSONPropertyWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONPropertyWindowController.m; sourceTree = "<group>"; };
 		43368AA115E4AB5D006AA4F4 /* JSONPropertyWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSONPropertyWindowController.xib; sourceTree = "<group>"; };
-		4349430A15E1D6ED006A427A /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		4349430B15E1D6ED006A427A /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		4349431715E1D7B3006A427A /* JSONWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONWindowController.h; sourceTree = "<group>"; };
 		4349431815E1D7B3006A427A /* JSONWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONWindowController.m; sourceTree = "<group>"; };
 		4349431915E1D7B3006A427A /* JSONWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSONWindowController.xib; sourceTree = "<group>"; };
@@ -104,8 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				435388BC15E70E3E00D45C0E /* AutomaticCoder.entitlements */,
-				4349430A15E1D6ED006A427A /* JSONKit.h */,
-				4349430B15E1D6ED006A427A /* JSONKit.m */,
 				438EDC3915E1D08700D6B752 /* AppDelegate.h */,
 				438EDC3A15E1D08700D6B752 /* AppDelegate.m */,
 				438EDC3C15E1D08800D6B752 /* MainMenu.xib */,
@@ -117,6 +114,7 @@
 				43368AA115E4AB5D006AA4F4 /* JSONPropertyWindowController.xib */,
 				4349431F15E1E088006A427A /* json.zx1 */,
 				4349432015E1E088006A427A /* json.zx2 */,
+				33618AF21B92BC080060B08F /* swift.temp */,
 				438EDC2E15E1D08700D6B752 /* Supporting Files */,
 			);
 			path = AutomaticCoder;
@@ -190,6 +188,7 @@
 				438EDC3E15E1D08800D6B752 /* MainMenu.xib in Resources */,
 				4349431B15E1D7B3006A427A /* JSONWindowController.xib in Resources */,
 				4349432115E1E088006A427A /* json.zx1 in Resources */,
+				33618AF31B92BC080060B08F /* swift.temp in Resources */,
 				4349432215E1E088006A427A /* json.zx2 in Resources */,
 				43368AA315E4AB5D006AA4F4 /* JSONPropertyWindowController.xib in Resources */,
 				437AAE1A15E63843005CC126 /* icons.icns in Resources */,
@@ -205,7 +204,6 @@
 			files = (
 				438EDC3415E1D08700D6B752 /* main.m in Sources */,
 				438EDC3B15E1D08700D6B752 /* AppDelegate.m in Sources */,
-				4349430C15E1D6ED006A427A /* JSONKit.m in Sources */,
 				4349431A15E1D7B3006A427A /* JSONWindowController.m in Sources */,
 				43368AA215E4AB5D006AA4F4 /* JSONPropertyWindowController.m in Sources */,
 			);
@@ -294,7 +292,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = AutomaticCoder/AutomaticCoder.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutomaticCoder/AutomaticCoder-Prefix.pch";
@@ -310,7 +307,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = AutomaticCoder/AutomaticCoder.entitlements;
-				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutomaticCoder/AutomaticCoder-Prefix.pch";

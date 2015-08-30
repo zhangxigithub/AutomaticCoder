@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "JSONKit.h"
+
 #import "JSONPropertyWindowController.h"
 
 typedef enum
@@ -31,6 +31,7 @@ typedef enum
 @property (weak) IBOutlet NSTextField *jsonName;
 @property (weak) IBOutlet NSTextField *preName;
 @property (weak) IBOutlet NSTextField *jsonURL;
+@property (weak) IBOutlet NSMatrix *matrix;
 
 - (IBAction)useTestURL:(id)sender;
 - (IBAction)getJSONWithURL:(id)sender;

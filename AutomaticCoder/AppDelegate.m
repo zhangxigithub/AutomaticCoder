@@ -21,7 +21,8 @@
 }
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-
+    //json = [[JSONWindowController alloc] initWithWindowNibName:@"JSONWindowController"];
+    //[[json window] makeKeyAndOrderFront:nil];
 }
 - (NSString *) description
 {
@@ -37,6 +38,6 @@
 }
 
 - (IBAction)donate:(id)sender {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://zxapi.sinaapp.com/paypal.html"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.zhangxi.me"]];
 }
 @end

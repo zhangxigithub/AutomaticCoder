@@ -195,6 +195,8 @@
 
 - (IBAction)getJSONWithURL:(id)sender {
     
+    NSLog(@"%ld",(long)self.matrix.selectedColumn);
+    
     NSString *str = [jsonURL.stringValue stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     
@@ -204,9 +206,14 @@
                                                         returningResponse:nil
                                                                     error:nil];
     
-    NSDictionary *json = [data objectFromJSONData];
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONWritingPrettyPrinted error:nil];
+    
     if(json != nil)
-    jsonContent.string = [json JSONStringWithOptions:JKSerializeOptionPretty error:nil];
+    {
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:json options:NSJSONWritingPrettyPrinted error:nil];
+        
+        jsonContent.string = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }
 }
 
 -(void)generateProperty:(NSDictionary *)json withName:(NSString *)className;
@@ -324,13 +331,15 @@
 
 - (IBAction)generateClass:(id)sender {
     
+    NSData *data = [jsonContent.string dataUsingEncoding:NSUTF8StringEncoding];
     
+    NSError *error;
+    NSDictionary *json   = [NSJSONSerialization JSONObjectWithData:data options:NSJSONWritingPrettyPrinted error:&error];
     
-    NSDictionary *json   = [jsonContent.string objectFromJSONString];
     
     if(json == nil)
     {
-        jsonContent.string = @"json is invalid.";
+        jsonContent.string = [error description];
         return;
     }
 
@@ -352,12 +361,14 @@
 }
 
 - (IBAction)checkProperty:(id)sender {
+    NSData *data = [jsonContent.string dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSDictionary *json   = [jsonContent.string objectFromJSONString];
+    NSError *error;
+    NSDictionary *json   = [NSJSONSerialization JSONObjectWithData:data options:NSJSONWritingPrettyPrinted error:&error];
     
     if(json == nil)
     {
-        jsonContent.string = @"json is invalid.";
+        jsonContent.string = [error description];
         return;
     }
     
