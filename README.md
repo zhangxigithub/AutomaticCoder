@@ -1,7 +1,7 @@
 # Automatic Coder
 
-![截图1](http://zxapi.sinaapp.com/image_library/json1.jpg)
-![截图2](http://zxapi.sinaapp.com/image_library/json2.jpg)
+![截图1](resource/autoViewCoder.png)
+![截图2](resource/dic2model.png)
 ## Overview
 Automatic generate Objective-C code by JSON string.Support \<NSCoding\>.
 
