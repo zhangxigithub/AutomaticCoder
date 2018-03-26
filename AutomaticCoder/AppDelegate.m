@@ -37,6 +37,11 @@
     [[json window] makeKeyAndOrderFront:nil];
 }
 
+- (IBAction)autoControlCode:(id)sender {
+    autoControlCodeWC  = [[AutoControlCodeWindowController alloc] initWithWindowNibName:@"AutoControlCodeWindowController"];
+    [[autoControlCodeWC window] makeKeyAndOrderFront:nil];
+}
+
 - (IBAction)donate:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://www.zhangxi.me"]];
 }
