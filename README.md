@@ -1,11 +1,16 @@
 # Automatic Coder
 
 Function 1: Transform json data into model file (perfect fitting MJExtension)
+
 功能1：json数据转模型文件(完美适配MJExtension)
+
 ![截图2](resource/dic2model.png)
 
+
 Function 2: Automatic create view code
+
 功能2:自动生成控件代码
+
 ![截图1](resource/autoViewCoder.png)
 
 ## Overview
