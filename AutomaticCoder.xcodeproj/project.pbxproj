@@ -21,6 +21,8 @@
 		438EDC3815E1D08700D6B752 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 438EDC3615E1D08700D6B752 /* Credits.rtf */; };
 		438EDC3B15E1D08700D6B752 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 438EDC3A15E1D08700D6B752 /* AppDelegate.m */; };
 		438EDC3E15E1D08800D6B752 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438EDC3C15E1D08800D6B752 /* MainMenu.xib */; };
+		953707B71F30180600DEC6DE /* AutoControlCodeWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 953707B51F30180600DEC6DE /* AutoControlCodeWindowController.m */; };
+		953707B81F30180600DEC6DE /* AutoControlCodeWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 953707B61F30180600DEC6DE /* AutoControlCodeWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +37,7 @@
 		4349432015E1E088006A427A /* json.zx2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = json.zx2; sourceTree = "<group>"; };
 		435388BC15E70E3E00D45C0E /* AutomaticCoder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AutomaticCoder.entitlements; sourceTree = "<group>"; };
 		437AAE1915E63843005CC126 /* icons.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icons.icns; sourceTree = "<group>"; };
-		438EDC2315E1D08700D6B752 /* AutomaticCoder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutomaticCoder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		438EDC2315E1D08700D6B752 /* 代码自动化工具.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "代码自动化工具.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		438EDC2715E1D08700D6B752 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		438EDC2A15E1D08700D6B752 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		438EDC2B15E1D08700D6B752 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -48,6 +50,9 @@
 		438EDC3915E1D08700D6B752 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		438EDC3A15E1D08700D6B752 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		438EDC3D15E1D08800D6B752 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		953707B41F30180600DEC6DE /* AutoControlCodeWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoControlCodeWindowController.h; sourceTree = "<group>"; };
+		953707B51F30180600DEC6DE /* AutoControlCodeWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoControlCodeWindowController.m; sourceTree = "<group>"; };
+		953707B61F30180600DEC6DE /* AutoControlCodeWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AutoControlCodeWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,7 +80,7 @@
 		438EDC2415E1D08700D6B752 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				438EDC2315E1D08700D6B752 /* AutomaticCoder.app */,
+				438EDC2315E1D08700D6B752 /* 代码自动化工具.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,6 +117,9 @@
 				43368A9F15E4AB5D006AA4F4 /* JSONPropertyWindowController.h */,
 				43368AA015E4AB5D006AA4F4 /* JSONPropertyWindowController.m */,
 				43368AA115E4AB5D006AA4F4 /* JSONPropertyWindowController.xib */,
+				953707B41F30180600DEC6DE /* AutoControlCodeWindowController.h */,
+				953707B51F30180600DEC6DE /* AutoControlCodeWindowController.m */,
+				953707B61F30180600DEC6DE /* AutoControlCodeWindowController.xib */,
 				4349431F15E1E088006A427A /* json.zx1 */,
 				4349432015E1E088006A427A /* json.zx2 */,
 				33618AF21B92BC080060B08F /* swift.temp */,
@@ -149,7 +157,7 @@
 			);
 			name = AutomaticCoder;
 			productName = AutomaticCoder;
-			productReference = 438EDC2315E1D08700D6B752 /* AutomaticCoder.app */;
+			productReference = 438EDC2315E1D08700D6B752 /* 代码自动化工具.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -160,6 +168,12 @@
 			attributes = {
 				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = me.zhangxi;
+				TargetAttributes = {
+					438EDC2215E1D08700D6B752 = {
+						DevelopmentTeam = 5K4K8K95V5;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = 438EDC1D15E1D08700D6B752 /* Build configuration list for PBXProject "AutomaticCoder" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -186,6 +200,7 @@
 				438EDC3215E1D08700D6B752 /* InfoPlist.strings in Resources */,
 				438EDC3815E1D08700D6B752 /* Credits.rtf in Resources */,
 				438EDC3E15E1D08800D6B752 /* MainMenu.xib in Resources */,
+				953707B81F30180600DEC6DE /* AutoControlCodeWindowController.xib in Resources */,
 				4349431B15E1D7B3006A427A /* JSONWindowController.xib in Resources */,
 				4349432115E1E088006A427A /* json.zx1 in Resources */,
 				33618AF31B92BC080060B08F /* swift.temp in Resources */,
@@ -206,6 +221,7 @@
 				438EDC3B15E1D08700D6B752 /* AppDelegate.m in Sources */,
 				4349431A15E1D7B3006A427A /* JSONWindowController.m in Sources */,
 				43368AA215E4AB5D006AA4F4 /* JSONPropertyWindowController.m in Sources */,
+				953707B71F30180600DEC6DE /* AutoControlCodeWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,13 +308,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = AutomaticCoder/AutomaticCoder.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5K4K8K95V5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutomaticCoder/AutomaticCoder-Prefix.pch";
 				INFOPLIST_FILE = "AutomaticCoder/AutomaticCoder-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "代码自动化工具";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -307,13 +327,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = AutomaticCoder/AutomaticCoder.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5K4K8K95V5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AutomaticCoder/AutomaticCoder-Prefix.pch";
 				INFOPLIST_FILE = "AutomaticCoder/AutomaticCoder-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "代码自动化工具";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

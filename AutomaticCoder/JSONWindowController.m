@@ -51,20 +51,25 @@
     //property
     NSMutableString *proterty = [NSMutableString string];
     NSMutableString *import = [NSMutableString string];
+    //.m
+    //MJ属性是数组，数组元素为也是模型
+    NSMutableString *propertyArrayStr = [NSMutableString string];
     
     for(NSString *key in [json allKeys])
     {
         JsonValueType type = [self type:[json objectForKey:key]];
         switch (type) {
             case kString:
+                [proterty appendFormat:@"@property (nonatomic,copy) %@ *%@%@;\n",[self typeName:type],preName.stringValue,key];
+                break;
             case kNumber:
                 [proterty appendFormat:@"@property (nonatomic,strong) %@ *%@%@;\n",[self typeName:type],preName.stringValue,key];
                 break;
             case kArray:
             {
+                [proterty appendFormat:@"@property (nonatomic,strong) NSMutableArray *%@%@;\n",preName.stringValue,key];
                 if([self isDataArray:[json objectForKey:key]])
                 {
-                    [proterty appendFormat:@"@property (nonatomic,strong) NSMutableArray *%@%@;\n",preName.stringValue,key];
                     [import appendFormat:@"#import \"%@Entity.h\"",[self uppercaseFirstChar:key]];
                     [self generateClass:[NSString stringWithFormat:@"%@Entity",[self uppercaseFirstChar:key]] forDic:[[json objectForKey:key]objectAtIndex:0]];
                 }
@@ -112,11 +117,12 @@
     NSMutableString *description = [NSMutableString string];
     
     NSDictionary *list =  @{
-    @"config":config,
-    @"encode":encode,
-    @"decode":decode,
-    @"description":description
-    };
+                            @"property:array":propertyArrayStr,
+                            @"config":config,
+                            @"encode":encode,
+                            @"decode":decode,
+                            @"description":description
+                            };
     
     
     for(NSString *key in [json allKeys])
@@ -125,38 +131,39 @@
         switch (type) {
             case kString:
             case kNumber:
-                [config appendFormat:@"self.%@%@  = [json objectForKey:@\"%@\"];\n ",preName.stringValue,key,key];
-                [encode appendFormat:@"[aCoder encodeObject:self.%@%@ forKey:@\"zx_%@\"];\n",preName.stringValue,key,key];
-                [decode appendFormat:@"self.%@%@ = [aDecoder decodeObjectForKey:@\"zx_%@\"];\n ",preName.stringValue,key,key];
-                [description appendFormat:@"result = [result stringByAppendingFormat:@\"%@%@ : %%@\\n\",self.%@%@];\n",preName.stringValue,key,preName.stringValue,key];
+                [config appendFormat:@"self.%@%@  = [json objectForKey:@\"%@\"];\n\t\t",preName.stringValue,key,key];
+                [encode appendFormat:@"[aCoder encodeObject:self.%@%@ forKey:@\"zx_%@\"];\n\t",preName.stringValue,key,key];
+                [decode appendFormat:@"self.%@%@ = [aDecoder decodeObjectForKey:@\"zx_%@\"];\n\t\t",preName.stringValue,key,key];
+                [description appendFormat:@"result = [result stringByAppendingFormat:@\"%@%@ : %%@\\n\",self.%@%@];\n\t",preName.stringValue,key,preName.stringValue,key];
                 break;
             case kArray:
             {
                 if([self isDataArray:[json objectForKey:key]])
                 {
-                    [config appendFormat:@"self.%@%@ = [NSMutableArray array];\n",preName.stringValue,key];
-                    [config appendFormat:@"for(NSDictionary *item in [json objectForKey:@\"%@\"])\n",key];
+                    [propertyArrayStr appendFormat:@"@\"%@%@\":@\"%@Entity\",",preName.stringValue,key,[self uppercaseFirstChar:key]];
+                    [config appendFormat:@"self.%@%@ = [NSMutableArray array];\n\t",preName.stringValue,key];
+                    [config appendFormat:@"for(NSDictionary *item in [json objectForKey:@\"%@\"])\n\t\t",key];
                     [config appendString:@"{\n"];
-                    [config appendFormat:@"[self.%@%@ addObject:[[%@Entity alloc] initWithJson:item]];\n",preName.stringValue,key,[self uppercaseFirstChar:key]];
+                    [config appendFormat:@"[self.%@%@ addObject:[[%@Entity alloc] initWithJson:item]];\n\t",preName.stringValue,key,[self uppercaseFirstChar:key]];
                     [config appendString:@"}\n"];
-                    [encode appendFormat:@"[aCoder encodeObject:self.%@%@ forKey:@\"zx_%@\"];\n",preName.stringValue,key,key];
-                    [decode appendFormat:@"self.%@%@ = [aDecoder decodeObjectForKey:@\"zx_%@\"];\n ",preName.stringValue,key,key];
-                   [description appendFormat:@"result = [result stringByAppendingFormat:@\"%@%@ : %%@\\n\",self.%@%@];\n",preName.stringValue,key,preName.stringValue,key]; 
+                    [encode appendFormat:@"[aCoder encodeObject:self.%@%@ forKey:@\"zx_%@\"];\n\t",preName.stringValue,key,key];
+                    [decode appendFormat:@"self.%@%@ = [aDecoder decodeObjectForKey:@\"zx_%@\"];\n\t\t",preName.stringValue,key,key];
+                   [description appendFormat:@"result = [result stringByAppendingFormat:@\"%@%@ : %%@\\n\",self.%@%@];\n\t",preName.stringValue,key,preName.stringValue,key];
                 }
             }
                 break;
             case kDictionary:
-                [config appendFormat:@"self.%@%@  = [[%@Entity alloc] initWithJson:[json objectForKey:@\"%@\"]];\n ",preName.stringValue,key,[self uppercaseFirstChar:key],key];
-                [encode appendFormat:@"[aCoder encodeObject:self.%@%@ forKey:@\"zx_%@\"];\n",preName.stringValue,key,key];
-                [decode appendFormat:@"self.%@%@ = [aDecoder decodeObjectForKey:@\"zx_%@\"];\n ",preName.stringValue,key,key];
-                [description appendFormat:@"result = [result stringByAppendingFormat:@\"%@%@ : %%@\\n\",self.%@%@];\n",preName.stringValue,key,preName.stringValue,key]; 
+                [config appendFormat:@"self.%@%@  = [[%@Entity alloc] initWithJson:[json objectForKey:@\"%@\"]];\n\t\t",preName.stringValue,key,[self uppercaseFirstChar:key],key];
+                [encode appendFormat:@"[aCoder encodeObject:self.%@%@ forKey:@\"zx_%@\"];\n\t",preName.stringValue,key,key];
+                [decode appendFormat:@"self.%@%@ = [aDecoder decodeObjectForKey:@\"zx_%@\"];\n\t\t",preName.stringValue,key,key];
+                [description appendFormat:@"result = [result stringByAppendingFormat:@\"%@%@ : %%@\\n\",self.%@%@];\n\t",preName.stringValue,key,preName.stringValue,key];
                 
                 break;
             case kBool:
-                [config appendFormat:@"self.%@%@ = [[json objectForKey:@\"%@\"]boolValue];\n ",preName.stringValue,key,key];
-                [encode appendFormat:@"[aCoder encodeBool:self.%@%@ forKey:@\"zx_%@\"];\n",preName.stringValue,key,key];
-                [decode appendFormat:@"self.%@%@ = [aDecoder decodeBoolForKey:@\"zx_%@\"];\n",preName.stringValue,key,key];
-                [description appendFormat:@"result = [result stringByAppendingFormat:@\"%@%@ : %%@\\n\",self.%@%@?@\"yes\":@\"no\"];\n",preName.stringValue,key,preName.stringValue,key];
+                [config appendFormat:@"self.%@%@ = [[json objectForKey:@\"%@\"]boolValue];\n\t\t",preName.stringValue,key,key];
+                [encode appendFormat:@"[aCoder encodeBool:self.%@%@ forKey:@\"zx_%@\"];\n\t",preName.stringValue,key,key];
+                [decode appendFormat:@"self.%@%@ = [aDecoder decodeBoolForKey:@\"zx_%@\"];\n\t",preName.stringValue,key,key];
+                [description appendFormat:@"result = [result stringByAppendingFormat:@\"%@%@ : %%@\\n\",self.%@%@?@\"yes\":@\"no\"];\n\t",preName.stringValue,key,preName.stringValue,key];
                 break;
             default:
                 break;
@@ -417,9 +424,9 @@
     if([[obj className] isEqualToString:@"__NSCFString"] || [[obj className] isEqualToString:@"__NSCFConstantString"]) return kString;
     else if([[obj className] isEqualToString:@"__NSCFNumber"]) return kNumber;
     else if([[obj className] isEqualToString:@"__NSCFBoolean"])return kBool;
-    else if([[obj className] isEqualToString:@"JKDictionary"])return kDictionary;
-    else if([[obj className] isEqualToString:@"JKArray"])return kArray;
-    return -1;
+    else if([[obj className] isEqualToString:@"__NSDictionaryM"])return kDictionary;
+    else if([[obj className] isEqualToString:@"__NSArrayM"])return kArray;
+    return kString;
 }
 
 -(NSString *)typeName:(JsonValueType)type
